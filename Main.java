@@ -14,7 +14,8 @@ public class Main {
         int width = 1600; //screen width
         int height = 800; // screen height
         double gravity = 9.80665; // gravity
-        double x0 = 120; // x and y coordinates of the bullet’s starting position on the platform double y0 = 120;
+        double x0 = 120; // x and y coordinates of the bullet’s starting position on the platform
+        double y0 = 120;
         double bulletVelocity = 180; // initial velocity
         double bulletAngle = 45.0; // initial angle
 
@@ -127,7 +128,7 @@ public class Main {
 
             // Whenever an input from the user is detected or the canvas needs to be redrawn because it is the first iteration of the loop, the canvas is redrawn.
             if (inputDetected || needsRedraw) {
-                drawCanvas(x0, bulletVelocity, bulletAngle, lineLength, obstacleArray, targetArray);
+                drawCanvas(x0, y0, bulletVelocity, bulletAngle, lineLength, obstacleArray, targetArray);
                 needsRedraw = false;
             }
 
@@ -231,7 +232,7 @@ public class Main {
      * @param obstacleArray
      * @param targetArray
      */
-    public static void drawCanvas(double x0, double bulletVelocity, double bulletAngle, double lineLength, double[][] obstacleArray, double[][] targetArray) {
+    public static void drawCanvas(double x0, double y0, double bulletVelocity, double bulletAngle, double lineLength, double[][] obstacleArray, double[][] targetArray) {
         // Canvas is cleared in each redrawing.
         StdDraw.clear();
 
@@ -249,19 +250,19 @@ public class Main {
 
         // The color is set to black and the shooting platform is drawn.
         StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.filledRectangle(x0 / 2, x0 / 2, x0 / 2, x0 / 2);
+        StdDraw.filledRectangle(x0 / 2, y0 / 2, x0 / 2, y0 / 2);
 
         // Pen radius is set to 0.008, which is 4 times the default value, in order to make the shooting line thicker.
         StdDraw.setPenRadius(0.008);
         // The shooting line is drawn.
-        StdDraw.line(x0, x0, x0 + lineLength * Math.cos(Math.toRadians(bulletAngle)) * 0.3, x0 + lineLength * Math.sin(Math.toRadians(bulletAngle)) * 0.3);
+        StdDraw.line(x0, y0, x0 + lineLength * Math.cos(Math.toRadians(bulletAngle)) * 0.3, y0 + lineLength * Math.sin(Math.toRadians(bulletAngle)) * 0.3);
         // Pen radius is set back to its default value.
         StdDraw.setPenRadius(0.002);
 
         // The color is set to white and the angle of shooting and velocity of the bullet are written in the shooting platform.
         StdDraw.setPenColor(StdDraw.WHITE);
-        StdDraw.text(x0 / 2, x0 / 2 + 10, "a: " + bulletAngle);
-        StdDraw.text(x0 / 2, x0 / 2 - 10, "v: " + bulletVelocity);
+        StdDraw.text(x0 / 2, y0 / 2 + 10, "a: " + bulletAngle);
+        StdDraw.text(x0 / 2, y0 / 2 - 10, "v: " + bulletVelocity);
 
         // The map design is showed to user interface.
         StdDraw.show();
