@@ -1,4 +1,4 @@
-# Angry-Bullet
+# Angry Bullet
 Angry Bullet is a simple 2D projectile motion game developed in Java using the StdDraw graphics library. This project was implemented as part of the coursework for CMPE160: Object Oriented Programming at Bogazici University during the Spring 2024 semester.
 
 The objective of the game is to adjust the angle and velocity of a bullet to hit designated targets while avoiding a series of obstacles. The game demonstrates basic physics simulation, user interaction, and graphical rendering using Java.
